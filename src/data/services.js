@@ -1,6 +1,6 @@
 export const services = [
     {
-        id: 0,
+        id: 1,
         name: "Test Service",
         description: "just a test service",
         duration: 3,
@@ -9,7 +9,7 @@ export const services = [
         available: true
     },
     {
-        id: 1,
+        id: 2,
         name: "Magick Lessons",
         description: "Mesmer teaches how to tame your magick for free",
         duration: 6,

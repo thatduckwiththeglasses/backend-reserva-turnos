@@ -3,3 +3,4 @@ node_modules/
 .DS_Store  
 npm-debug.log*
 src/routes/old.services.routes.js
+src/managers/functionType.ServiceManager.js
