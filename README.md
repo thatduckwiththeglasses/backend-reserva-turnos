@@ -1,29 +1,34 @@
 --- Sistema de reserva de turnos: ---
 
-#Descripcion:
-    Simple sistema de reserva de turnos de diversos servicios
+# Descripcion:
+Simple sistema de reserva de turnos de diversos servicios
 
-    Se puede: crear un servicio, ver los servicios, actualizar un servicio y eliminar un servicio, crear una reserva, reservar un servicio, actualizar una reserva y eliminar una reserva
+Se puede
+    crear un servicio, ver los servicios, actualizar un servicio y eliminar un servicio, crear una reserva, reservar un servicio, actualizar una reserva y eliminar una reserva
 
 
 
-#Instrucciones:
+# Instrucciones:
 
 #1 Como instalar (en Visual Studio Code):
-#    se deben instalar las sig. dependencias:
-#            1.Node.js:
-                npm install node
-#            2.dotenv:
-                npm install dotenv
-#            3.express:
-                npm install express
+    se deben instalar las sig. dependencias
+        -   1. Node.js:
+                'npm install node'
+        -   2.dotenv:
+                'npm install dotenv'
+        -   3.express:
+                'npm install express'
 
 #2 Como ejecutar (en VSC):
-#    por ahora se debe ejecutar con el sig. comando:
-        npm run dev
+    por ahora se debe ejecutar con el sig. comando
+        'npm run dev'
 
 #3 Variables de entorno:
-#    hay 2; PORT siendo la variable que indica que puerto se utilizara para el servidor y NODE_ENV que define el tipo de entrono al ejecutar el servidor. Existe un archivo de ejemplo
+    hay 2 
+    - PORT siendo la variable que indica que puerto se utilizara para el servidor 
+    - NODE_ENV que define el tipo de entrono al ejecutar el servidor 
+    
+    Existe un archivo de ejemplo
 
 #4 Descripcion de recursos:
 #    1.Services:
