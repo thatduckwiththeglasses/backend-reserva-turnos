@@ -9,24 +9,24 @@
 
 #Instrucciones:
 
-1# Como instalar (en Visual Studio Code):
-        se deben instalar las sig. dependencias:
-            1.Node.js:
+#1 Como instalar (en Visual Studio Code):
+#    se deben instalar las sig. dependencias:
+#            1.Node.js:
                 npm install node
-            2.dotenv:
+#            2.dotenv:
                 npm install dotenv
-            3.express:
+#            3.express:
                 npm install express
 
-2# Como ejecutar (en VSC):
-    por ahora se debe ejecutar con el sig. comando:
+#2 Como ejecutar (en VSC):
+#    por ahora se debe ejecutar con el sig. comando:
         npm run dev
 
-3# Variables de entorno:
-    hay 2; PORT siendo la variable que indica que puerto se utilizara para el servidor y NODE_ENV que define el tipo de entrono al ejecutar el servidor. Existe un archivo de ejemplo
+#3 Variables de entorno:
+#    hay 2; PORT siendo la variable que indica que puerto se utilizara para el servidor y NODE_ENV que define el tipo de entrono al ejecutar el servidor. Existe un archivo de ejemplo
 
-4# Descripcion de recursos:
-    1.Services:
+#4 Descripcion de recursos:
+#    1.Services:
         id: valor irrepetible para identificar los servicios; tipo int
         title: titulo del servicio; tipo string
         description: descripcion del servicio; tipo string
@@ -34,7 +34,7 @@
         price: precio del servicio; tipo int
         available: disponibilidad del servicio; tipo boolean
 
-    2.Bookings:
+#    2.Bookings:
         id: valor para identificar las reservas; tipo int
         clientName: Nombre del cliente con reserva; tipo string
         clientEmail: Email del cliente; tipo string
