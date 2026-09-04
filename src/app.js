@@ -3,6 +3,7 @@
 import express from "express";
 import { logger } from "./middlewares/logger.middleware.js";
 import routerServices from "./routes/services.routes.js";
+import routerBookings from "./routes/bookings.routes.js";
 
 
  const app = express();
@@ -12,6 +13,7 @@ import routerServices from "./routes/services.routes.js";
  
  //routers
  app.use("/api/services",routerServices);
+ app.use("/api/bookings",routerBookings);
 
 app.get("/",(req, res) => {
     res.status(200).json({

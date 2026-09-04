@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { generateId } from "./index.js";
 
 export class ServiceManager {
     
@@ -51,8 +52,8 @@ export class ServiceManager {
         const services = await this.readServices();
 
         const newService = {
-            id: this.generateId(services),
             ...serviceData,
+            id: generateId(services),
         };
 
         services.push(newService);
@@ -62,15 +63,6 @@ export class ServiceManager {
         return newService;
     };
 
-    generateId(services) {
-        if (services.length === 0){
-            return 1;
-        }
-
-        const ids = services.map((service) => service.id);
-
-        return Math.max(...ids) + 1;
-    };
     async updateService(id, serviceData) {
         const services = await this.readServices();
 

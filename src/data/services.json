@@ -16,5 +16,14 @@
     "price": 230,
     "category": "games",
     "available": "true"
+  },
+  {
+    "id": 3,
+    "name": "Magick Lessons",
+    "description": "Mesmer teaches how to tame your magick for free",
+    "duration": "6",
+    "price": 10,
+    "category": "magick",
+    "available": "true"
   }
 ]
