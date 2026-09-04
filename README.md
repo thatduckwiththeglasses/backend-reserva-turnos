@@ -1,4 +1,4 @@
---- Sistema de reserva de turnos: ---
+# --- Sistema de reserva de turnos: ---
 
 # Descripcion:
 Simple sistema de reserva de turnos de diversos servicios
@@ -10,7 +10,7 @@ Se puede
 
 # Instrucciones:
 
-#1 Como instalar (en Visual Studio Code):
+# 1.Como instalar (en Visual Studio Code):
     se deben instalar las sig. dependencias
         -   1. Node.js:
                 'npm install node'
@@ -19,7 +19,7 @@ Se puede
         -   3.express:
                 'npm install express'
 
-#2 Como ejecutar (en VSC):
+# 2.Como ejecutar (en VSC):
     por ahora se debe ejecutar con el sig. comando
         'npm run dev'
 
