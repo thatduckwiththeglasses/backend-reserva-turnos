@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
-import { generateId } from "./index.js";
-import ServiceManager from "./ServiceManager.js";
+import { generateId, serviceManager } from "./index.js";
 
 export class BookingManager {
 
@@ -54,9 +53,9 @@ export class BookingManager {
        const bookings = await this.readBookings();
 
        const newBooking = {
-           id: generateId(bookings),
-           ...bookingData,
            services: [],
+            ...bookingData,
+           id: generateId(bookings),
        };
 
        bookings.push(newBooking);
@@ -90,26 +89,30 @@ export class BookingManager {
 
     async addServiceToBooking(bookingId,serviceId){
 
-        let booking = await this.getBookingById(bookingId);
-        let addservice = await ServiceManager(this.servicePath).getServiceById(serviceId);
+        const booking = await this.getBookingById(bookingId);
+        const addservice = await serviceManager.getServiceById(serviceId);
 
-        if (!booking || !addservice){
+        if (!booking){
+            return -1
+        }
+        if(!addservice){
             return null
         }
 
-        if (booking.services.map((service) => service.id === Number(serviceId))){
-            booking.services.push({
-                service: addservice.id,
-                quantity: Number(quantity + 1)
-            })
+        const serviceIndex = booking.services.map((service) => service.id === Number(serviceId));
+
+        console.log(serviceIndex);
+        if (serviceIndex){
+            console.log(booking.services[serviceIndex]);
+            booking.services[serviceIndex].quantity += 1;
         } else {
-            booking.services.push({
+           booking.services.push({
                 service: addservice.id,
                 quantity: 1
-            })
+            });
         }
 
-        await this.updateBooking(booking);
+        await this.updateBooking(bookingId,booking);
 
     };
 }

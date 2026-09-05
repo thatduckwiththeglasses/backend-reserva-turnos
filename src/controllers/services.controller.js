@@ -78,6 +78,27 @@ export const createService = async (req , res) => {
         });
     }
 
+    if (typeof duration !== "number"){
+        return res.status(400).json({
+            status: "--ERROR--",
+            message: "Duration debe ser un numero"
+        });
+    } else {
+        if (duration <= 0){
+            return res.status(400).json({
+                status: "--ERROR--",
+                message: "Duration debe ser mayor que 0"
+            });
+        }
+    }
+
+    if (typeof available !== "boolean"){
+        return res.status(400).json({
+            status: "--ERROR--",
+            message: "Available debe ser un booleano"
+        });
+    } 
+
     try{
         const newService = await serviceManager.addService({
             name,
@@ -104,6 +125,14 @@ export const createService = async (req , res) => {
 export const editService = async (req, res) => {
     try{
         const { id } = req.params;
+
+        if (typeof id !== "number" || id <= 0) {
+            return res.status(400).json({
+                status: "--ERROR--",
+                message: "El ID debe ser un numero positivo"
+            });
+        };
+
         const updateService = await serviceManager.updateService(id,req.body);
 
         if(updateService === null){

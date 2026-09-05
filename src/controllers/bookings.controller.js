@@ -57,7 +57,7 @@ export const getBooking = async (req, res) => {
     }
 };
 
-export const bookService = async (res, req) => {
+export const bookService = async (req, res) => {
     try{
         const { id } = req.params.id;
 
