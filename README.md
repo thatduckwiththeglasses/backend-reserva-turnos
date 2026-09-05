@@ -23,14 +23,14 @@ Se puede
     por ahora se debe ejecutar con el sig. comando
         'npm run dev'
 
-#3 Variables de entorno:
+# 3 Variables de entorno:
     hay 2 
     - PORT siendo la variable que indica que puerto se utilizara para el servidor 
     - NODE_ENV que define el tipo de entrono al ejecutar el servidor 
     
     Existe un archivo de ejemplo
 
-#4 Descripcion de recursos:
+# 4 Descripcion de recursos:
 #    1.Services:
         id: valor irrepetible para identificar los servicios; tipo int
         title: titulo del servicio; tipo string

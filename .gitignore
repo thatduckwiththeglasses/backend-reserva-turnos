@@ -4,3 +4,5 @@ node_modules/
 npm-debug.log*
 src/routes/old.services.routes.js
 src/managers/functionType.ServiceManager.js
+src/routes/prectrls.services.routes.js
+src/routes/prectrl.bookings.routes.js
