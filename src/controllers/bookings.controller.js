@@ -79,5 +79,6 @@ export const bookService = async (req, res) => {
             status: "---ERROR---",
             message: "Error al añadir el servicio a la reserva",
             });
+        console.log(error)
     }
 };

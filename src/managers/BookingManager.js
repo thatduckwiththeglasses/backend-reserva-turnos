@@ -68,7 +68,7 @@ export class BookingManager {
     async updateBooking(id, bookingData){
         const bookings = await this.readBookings();
 
-        const bookingIndex = bookings.map((booking) => booking.id === Number(id))
+        const bookingIndex = bookings.findIndex((booking) => booking.id === Number(id))
 
         if(bookingIndex === -1){
             return null
@@ -99,20 +99,24 @@ export class BookingManager {
             return null
         }
 
-        const serviceIndex = booking.services.map((service) => service.id === Number(serviceId));
-
-        console.log(serviceIndex);
-        if (serviceIndex){
-            console.log(booking.services[serviceIndex]);
-            booking.services[serviceIndex].quantity += 1;
-        } else {
-           booking.services.push({
+        const bookedServices = booking.services;
+        const serviceIndex = bookedServices.findIndex((service) => service.service === Number(serviceId));
+        
+        if (serviceIndex === -1){
+            bookedServices.push({
                 service: addservice.id,
                 quantity: 1
             });
+        } else {
+           bookedServices[serviceIndex].quantity += 1;
         }
 
-        await this.updateBooking(bookingId,booking);
+        const updateData = {
+                ...booking,
+                services: bookedServices,
+        };
+        
+        return await this.updateBooking(bookingId,updateData);
 
     };
 }
