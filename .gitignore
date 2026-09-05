@@ -7,3 +7,4 @@ src/managers/functionType.ServiceManager.js
 src/routes/prectrls.services.routes.js
 src/routes/prectrl.bookings.routes.js
 src/routes/test.bookings.routes.js
+src/routes/prectrls.bookings.routes.js

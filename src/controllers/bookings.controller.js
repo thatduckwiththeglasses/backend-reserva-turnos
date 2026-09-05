@@ -59,9 +59,7 @@ export const getBooking = async (req, res) => {
 
 export const bookService = async (req, res) => {
     try{
-        const { id } = req.params.id;
-
-        const { sid } = req.params.sid;
+        const { id , sid } = req.params
 
         const updateBooking = await bookingManager.addServiceToBooking(id, sid);
 
