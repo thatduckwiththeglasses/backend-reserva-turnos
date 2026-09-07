@@ -11,3 +11,4 @@ src/routes/prectrls.bookings.routes.js
 src/managers/oldBookingManager.js
 src/managers/oldServiceManager.js
 src/controllers/prerefact.services.controller.js
+src/controllers/prerefact.bookings.controller.js

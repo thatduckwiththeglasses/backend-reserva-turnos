@@ -3,26 +3,9 @@ import { generateId } from "./index.js";
 
 export class ServiceManager {
     
-    constructor(path) {
-        this.path = path
+    constructor(dao) {
+        this.dao = dao;
     }
-
-    async readServices() {
-        try {
-            const data = await fs.readFile(this.path, 'utf-8');
-
-            return JSON.parse(data);
-        } catch (error){
-            if (error.code === "ENOENT"){
-                return [];
-            } else {
-                return {
-                    status: "ERROR",
-                    message: "No se pudo leer el archivo"
-                };
-            }
-        }
-    };
 
     async writeServices(services) {
         const data = JSON.stringify(services, null, 2)
