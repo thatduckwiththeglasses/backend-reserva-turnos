@@ -25,5 +25,14 @@
     "price": 10,
     "category": "magick",
     "available": "true"
+  },
+  {
+    "id": 4,
+    "name": "Test Service 2",
+    "description": "just another test service",
+    "duration": 10,
+    "price": 200,
+    "category": "test",
+    "available": true
   }
 ]

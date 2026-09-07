@@ -8,3 +8,6 @@ src/routes/prectrls.services.routes.js
 src/routes/prectrl.bookings.routes.js
 src/routes/test.bookings.routes.js
 src/routes/prectrls.bookings.routes.js
+src/managers/oldBookingManager.js
+src/managers/oldServiceManager.js
+src/controllers/prerefact.services.controller.js

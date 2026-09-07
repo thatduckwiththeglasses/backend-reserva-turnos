@@ -63,6 +63,13 @@ export const bookService = async (req, res) => {
 
         const updateBooking = await bookingManager.addServiceToBooking(id, sid);
 
+        if(updateBooking === -1){
+            return res.status(404).json({
+                status: "--ERROR--",
+                message: "Reserva no encontrada"
+            })
+        };
+        
         if(updateBooking === null){
             return res.status(404).json({
                 status: "--ERROR--",
