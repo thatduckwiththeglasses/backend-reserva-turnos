@@ -1,22 +1,36 @@
 import { Router } from 'express';
 
 
-import { servicesService } from '../dependencies/index.js';
+import { servicesService , bookingsService } from '../dependencies/index.js';
 
 
 
 const router = Router();
 
 
-router.get('/services', async (req, res) => {
-  const services = await servicesService.getServices();
-
-  res.render('services', {
-    services
-  });
+router.get("/", (req, res) => {
+  res.render('home');
 });
 
+router.get('/services', async (req, res) => {
+  try {
+      const services = await servicesService.getServices(req.body);
 
+      res.render('services', {
+        services
+      });
+  } catch(error){
+    
+  };
+});
+
+router.get('/bookings', async (req, res) => {
+  const bookings = await bookingsService.getBooking(req.params);
+
+  res.render('bookings', {
+    bookings
+  });
+});
 
 
 export default router;

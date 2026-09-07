@@ -18,6 +18,11 @@ Se puede
                 'npm install dotenv'
         -   3.express:
                 'npm install express'
+        -   4.mongoose:
+                'npm isntall mongoose'
+        -   5.express-handlebars:
+
+        -   6.socket.io
 
 # 2.Como ejecutar (en VSC):
     por ahora se debe ejecutar con el sig. comando
