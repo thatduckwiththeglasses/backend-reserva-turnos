@@ -38,32 +38,13 @@ export class ServicesService {
     async createService(data) {
         const { name, description, duration, price, category, available } = data;
 
-        if(!name || !description || !duration || !price || !category || available === undefined) {
-            return res.status(400).json({
-                status: "--ERROR--",
-                message: "Faltan campos obligatorios"
-            });
-        }
-        if (typeof duration !== "number"){
-            return res.status(400).json({
-                status: "--ERROR--",
-                message: "Duration debe ser un numero"
-            });
-        } else {
-            if (duration <= 0){
-                return res.status(400).json({
-                    status: "--ERROR--",
-                    message: "Duration debe ser mayor que 0"
-                });
+        if(!name || !description || !duration || !price || !category || available === undefined) throw new Error("Faltan campos obligatorios")
+        if (typeof duration !== "number") throw new Error("Duration debe ser un numero")
+         else {
+            if (duration <= 0) throw new Error("Duration debe ser mayor que 0")
             }
-        }
 
-        if (typeof available !== "boolean"){
-            return res.status(400).json({
-                status: "--ERROR--",
-                message: "Available debe ser un booleano"
-            });
-        } 
+        if (typeof available !== "boolean") throw new Error("Available debe ser un booleano");
 
         return this.repository.create({ name, description, duration, price, category, available })
     }

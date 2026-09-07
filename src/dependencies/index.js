@@ -1,6 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { ServiceDao } from "../dao/services.dao.js";
+import { ServicesMongoDao } from "../dao/mongo/services.mongodb.dao.js";
 import { BookingDao } from "../dao/bookings.dao.js";
 import { ServicesRepository } from "../repositories/services.repository.js";
 import { ServicesService } from "../services/services.service.js";
@@ -14,7 +14,7 @@ const servicesPath = path.join(__dirname, "..", "data", "services.json");
 
 const bookingsPath = path.join(__dirname, "..", "data", "bookings.json");
 
-const serviceDao = new ServiceDao(servicesPath);
+const serviceDao = new ServicesMongoDao(servicesPath);
 const servicesRepository = new ServicesRepository(serviceDao);
 
 export const servicesService = new ServicesService(servicesRepository);

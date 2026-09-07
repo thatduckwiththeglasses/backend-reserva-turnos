@@ -29,7 +29,7 @@ export const getService = async (req, res) => {
     try{
         const { id } = req.params;
 
-        const service = await servicesService.getServiceById(Number(id));
+        const service = await servicesService.getServiceById(id);
 
         if (service === null){
             res.status(404).json({
@@ -64,7 +64,7 @@ export const editService = async (req, res) => {
     try{
         const { id } = req.params;
 
-        const updateService = await servicesService.editService(Number(id),req.body);
+        const updateService = await servicesService.editService(id,req.body);
 
         if(updateService === null){
             return res.status(404).json({
@@ -85,7 +85,7 @@ export const editService = async (req, res) => {
 export const removeService = async (req, res) => {
     try{
         const { id } = req.params;
-        const deletedService = await servicesService.deleteService(Number(id));
+        const deletedService = await servicesService.deleteService(id);
 
         if(deletedService === null){
             return res.status(404).json({
