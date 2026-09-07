@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
 import crypto from "crypto";
-import { ServiceDao } from "./services.dao.js";
 
 export class BookingDao {
 
@@ -69,38 +68,5 @@ export class BookingDao {
         await this.#writeAll(bookings);
 
         return updateService;
-    };
-
-    async addService(bookingId,serviceId){
-        const booking = await this.getById(bookingId);
-        const serviceDao = new ServiceDao(this.servicePath);
-        const addservice = await serviceDao.getById(serviceId);
-
-        if (!booking){
-            return -1
-        }
-        if(!addservice){
-            return null
-        }
-
-        const bookedServices = booking.services;
-        const serviceIndex = bookedServices.findIndex((service) => service.service === Number(serviceId));
-        
-        if (serviceIndex === -1){
-            bookedServices.push({
-                service: addservice.id,
-                quantity: 1
-            });
-        } else {
-           bookedServices[serviceIndex].quantity += 1;
-        }
-
-        const updateData = {
-                ...booking,
-                services: bookedServices,
-        };
-        
-        return await this.edit(bookingId,updateData);
-        
     };
 }

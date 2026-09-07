@@ -8,11 +8,15 @@
     "services": [
       {
         "service": 1,
-        "quantity": 2
+        "quantity": 3
       },
       {
         "service": 2,
-        "quantity": 3
+        "quantity": 4
+      },
+      {
+        "service": 3,
+        "quantity": 1
       }
     ]
   },
@@ -40,11 +44,15 @@
     "services": [
       {
         "service": 1,
-        "quantity": 3
+        "quantity": 4
       },
       {
         "service": 3,
         "quantity": 4
+      },
+      {
+        "service": 2,
+        "quantity": 1
       }
     ]
   }

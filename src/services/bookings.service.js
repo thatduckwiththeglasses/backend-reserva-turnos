@@ -1,3 +1,5 @@
+import { servicesService } from "../dependencies/index.js";
+
 export class BookingsService {
     constructor(repository){
         this.repository = repository;
@@ -25,12 +27,30 @@ export class BookingsService {
     };
 
     async bookService(id,sid){
-        const updateBooking = await this.repository.addService(id,sid);
+        const updateBooking = await this.getBooking(id);
+
+        const addservice = await servicesService.getServiceById(sid);
 
         if(updateBooking === -1) throw new Error("Reserva no encontrada");
         
-        if(!updateBooking) throw new Error("Servicio no encontrado");
+        if(!addservice) throw new Error("Servicio no encontrado");
         
-        return updateBooking;
+        const bookedServices = updateBooking.services;
+        const serviceIndex = bookedServices.findIndex((service) => service.service === Number(sid));
+        
+        if (serviceIndex === -1){
+            bookedServices.push({
+                service: addservice.id,
+                quantity: 1
+            });
+        } else {
+           bookedServices[serviceIndex].quantity += 1;
+        }
+
+        const updateData = {
+                ...updateBooking,
+                services: bookedServices,
+        };
+        return await this.repository.edit(id,updateData);
     }
 }
