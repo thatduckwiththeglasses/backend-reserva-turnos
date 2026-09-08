@@ -20,7 +20,7 @@ router.get('/services', async (req, res) => {
         services
       });
   } catch(error){
-    
+    next(error)
   };
 });
 

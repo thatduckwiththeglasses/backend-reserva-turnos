@@ -1,1 +1,14 @@
-<h1>Home</h1>
+<div>
+    <h1>Home</h1>
+</div>
+
+<script scr="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    socket.emit("update service", { message: "evento de actualizacion" });
+
+    socket.on("welcome", ({ message }) => {
+        console.log(message);
+    })
+</script>

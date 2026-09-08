@@ -1,16 +1,48 @@
 <h1>Servicios disponibles</h1>
 
+
 {{#if services.length}}
+<section class="services" id="services">
     {{#each services}}
-      <article>
+      <article class="service">
         <h2>{{name}}</h2>
         <p>{{description}}</p>
         <p>Duración: {{duration}} minutos</p>
         <p>Precio: ${{price}}</p>
         <p>Categoría: {{category}}</p>
         <p class="badge">Disponible: {{available}}</p>
+        <button onclick="disableService('{{_id}}')">Deshabilitar servicio</button>
       </article>
     {{/each}}
+</section>
 {{else}}
     <p>No hay servicios cargados.</p>
 {{/if}}
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+
+  function disableService(id){
+    socket.emit("update service", { id, available: false });
+  }
+
+  socket.on("updated services", ({ services }) => {
+    let servicesSection = document.getElementById("services");
+    servicesSection.replaceChildren();
+
+    services.forEach((service) => {
+      servicesSection.innerHTML += `
+      <article class="service">
+        <h2>${service.name}</h2>
+        <p>${service.description}</p>
+        <p>Duración: ${service.duration} minutos</p>
+        <p>Precio: ${service.price}</p>
+        <p>Categoría: ${service.category}</p>
+        <p class="badge">Disponible: ${service.available}</p>
+        <button onclick="disableService('${service.id}')">Deshabilitar servicio</button>
+      </article>
+      `
+    })
+  })
+</script>

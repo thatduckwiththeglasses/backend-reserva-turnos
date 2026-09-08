@@ -3,13 +3,19 @@
 import express from "express";
 import { engine } from 'express-handlebars';
 
+import http from 'http';
+import { Server } from 'socket.io';
+
 import { logger } from "./middlewares/logger.middleware.js";
 import viewsRouter from './routes/views.router.js';
 import routerServices from "./routes/services.routes.js";
 import routerBookings from "./routes/bookings.routes.js";
+import { servicesService } from "./dependencies/index.js";
 
 
  const app = express();
+ const server = http.createServer(app);
+const io = new Server(server);
 
  app.use(express.json());
  app.engine('handlebars', engine());
@@ -40,6 +46,19 @@ app.use((req, res) => {
     });
 });
 
+io.on('connection', (socket) => {
+  console.log('Cliente conectado');
+  socket.emit("welcome", {message: "bienvenido"})
+  socket.on("update service", async ({ id, available }) => {
+    await servicesService.editService(id, available);
+    const services = await servicesService.getServices();
 
+    io.emit("updated services", { services })
+
+  })
+  socket.on('disconnect', () => {
+    console.log('Cliente desconectado');
+  });
+});
 
  export default app;

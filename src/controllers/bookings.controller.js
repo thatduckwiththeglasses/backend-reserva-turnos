@@ -20,7 +20,7 @@ export const getBooking = async (req, res) => {
     try{
         const { id } = req.params;
 
-        const booking = await bookingsService.getBooking(Number(id));
+        const booking = await bookingsService.getBooking(id);
 
         if (booking === null){
             res.status(404).json({
@@ -45,7 +45,7 @@ export const bookService = async (req, res) => {
     try{
         const { id , sid } = req.params
 
-        const updateBooking = await bookingsService.bookService(Number(id), Number(sid));
+        const updateBooking = await bookingsService.bookService(id, sid);
 
         res.status(200).json({
             status: "success",

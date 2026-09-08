@@ -36,7 +36,7 @@ export class BookingsService {
         if(!addservice) throw new Error("Servicio no encontrado");
         
         const bookedServices = updateBooking.services;
-        const serviceIndex = bookedServices.findIndex((service) => service.service === Number(sid));
+        const serviceIndex = bookedServices.findIndex((service) => service.service === sid);
         
         if (serviceIndex === -1){
             bookedServices.push({

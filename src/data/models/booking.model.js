@@ -14,7 +14,7 @@ const bookingSchema = new mongoose.Schema(
  type: Number,
  required: true
  },
- price: {
+ time: {
  type: Number,
  required: true
  },
@@ -22,11 +22,13 @@ const bookingSchema = new mongoose.Schema(
     {
         service: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'services'
+                ref: 'services',
+                required: false
             },
         quantity: {
             type: Number,
-            default: 1
+            default: 1,
+            required: false
         }
     }
  ]
