@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import paginate from 'mongoose-paginate-v2';
 
 const serviceSchema = new mongoose.Schema(
  {
@@ -20,7 +21,19 @@ const serviceSchema = new mongoose.Schema(
  },
  category: {
  type: String,
- required: true
+ required: true,
+ lowercase: true,
+ enum: ["deportes","musica","programcion","varios"]
+ },
+ capacity:{
+    type: Number,
+    required: true,
+    min:1
+ },
+ reserved:{
+    type: Number,
+    default:0,
+    min:0
  },
  available: {
  type: Boolean,
@@ -33,5 +46,15 @@ const serviceSchema = new mongoose.Schema(
  }
  );
  
+
+serviceSchema.index({ name: 1 }, { unique: true });
+serviceSchema.index({ description: "text" });
+serviceSchema.index({ price: 1 });
+serviceSchema.index({ category: 1 });
+
+serviceSchema.index({ price: 1, category: 1 });
+
+serviceSchema.plugin(paginate);
+
 export const ServiceModel = mongoose.model('services', serviceSchema);
 

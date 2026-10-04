@@ -11,8 +11,8 @@ export class BookingsRepository {
         return this.dao.getById(id);
     };
 
-    create(data) {
-        return this.dao.create(data);
+    create(data,sid) {
+        return this.dao.create(data,sid);
     };
 
     edit(id,data){

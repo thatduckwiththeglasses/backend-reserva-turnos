@@ -48,7 +48,6 @@ app.use((req, res) => {
 
 io.on('connection', (socket) => {
   console.log('Cliente conectado');
-  socket.emit("welcome", {message: "bienvenido"})
   socket.on("update service", async ({ id, available }) => {
     await servicesService.editService(id, available);
     const services = await servicesService.getServices();

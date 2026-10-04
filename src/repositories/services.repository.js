@@ -4,8 +4,8 @@ export class ServicesRepository {
         this.dao = dao;
     };
 
-    getAll() {
-        return this.dao.getAll();
+    getAll(category, maxPrice, limit, page) {
+        return this.dao.getAll(category, maxPrice, limit, page);
     };
 
     getById(id) {
@@ -23,4 +23,13 @@ export class ServicesRepository {
     delete(id) {
         return this.dao.delete(id);
     };
+
+    reserveCapacity(id, quantity){
+        return this.dao.reserveCapacity(id,quantity)
+    }
+
+    releaseCapacity(id, quantity){
+        return this.dao.releaseCapacity(id,quantity)
+    }
+    
 }

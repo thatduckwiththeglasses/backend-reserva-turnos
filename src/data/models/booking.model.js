@@ -18,23 +18,25 @@ const bookingSchema = new mongoose.Schema(
  type: Number,
  required: true
  },
- services: [
+ services: {
+    type:[
     {
         service: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'services',
-                required: false
+                ref: 'services'
             },
         quantity: {
             type: Number,
-            default: 1,
-            required: false
+            default: 1
         }
     }
- ]
+    ],
+    default: []
+    }
  },
  {
- timestamps: true
+ timestamps: true,
+ versionKey: false
  }
  );
  

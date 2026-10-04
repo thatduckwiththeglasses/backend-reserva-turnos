@@ -3,27 +3,11 @@ export class ServicesService {
         this.repository = repository;
     }
 
-    async getServices({category, price, available} = {}) {
-        const services = await this.repository.getAll();
-
-        if(category) {
-            services = services.filter(
-                (services) => services.category === category
-            )
-        }
-
-        if(price) {
-            services = services.filter(
-                (services) => services.price === price
-            );
-        }
-
-        if(available !== undefined) {
-            const availableBoolean = available === "true";
-            services = services.filter(
-                (services) => services.available === availableBoolean
-            );
-        }
+    async getServices(query = {}) {
+        const page = Number(query.page) > 0 ? Number(query.page) : 1;
+        const limit = Number(query.limit) > 0 ? Number(query.limit) : 10;
+        //const filter = {};
+        const services = await this.repository.getAll(query.category,query.price,limit,page);
 
         return services;
     }
@@ -36,7 +20,7 @@ export class ServicesService {
     }
 
     async createService(data) {
-        const { name, description, duration, price, category, available } = data;
+        const { name, description, duration, price, category, capacity, available } = data;
 
         if(!name || !description || !duration || !price || !category || available === undefined) throw new Error("Faltan campos obligatorios")
         if (typeof duration !== "number") throw new Error("Duration debe ser un numero")
@@ -46,7 +30,7 @@ export class ServicesService {
 
         if (typeof available !== "boolean") throw new Error("Available debe ser un booleano");
 
-        return this.repository.create({ name, description, duration, price, category, available })
+        return this.repository.create({ name, description, duration, price, category, capacity, available })
     }
 
     async editService(id,data) {

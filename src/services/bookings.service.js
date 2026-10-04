@@ -8,14 +8,18 @@ export class BookingsService {
     async createBooking(data) {
         const { clientName, clientEmail, date, time, status, services } = data;
 
-        if(!clientName || !clientEmail || !date || !time || !status || !services) {
+        if(!clientName || !clientEmail || !date || !time || !status) {
             return res.status(400).json({
                 status: "--ERROR--",
                 message: "Faltan campos obligatorios"
             });
         };
 
-        return await this.repository.create(data);
+        if (!services){
+            return await this.repository.create(data);
+        } else {
+            return await this.repository.create(data, services.service);
+        }
     };
 
     async getBooking(id) {
