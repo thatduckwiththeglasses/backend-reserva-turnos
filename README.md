@@ -21,8 +21,12 @@ Se puede
         -   4.mongoose:
                 'npm isntall mongoose'
         -   5.express-handlebars:
+                'npm isntall express-handlebars'
+        -   6.socket.io:
+                'npm isntall socket'
+        -   7.mongoose-paginate-v2:
+                'npm isntall mongoose-paginate-v2'
 
-        -   6.socket.io
 
 # 2.Como ejecutar (en VSC):
     por ahora se debe ejecutar con el sig. comando
