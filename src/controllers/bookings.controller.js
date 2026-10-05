@@ -59,3 +59,41 @@ export const bookService = async (req, res) => {
         console.log(error);
     }
 };
+
+export const cancelService = async (req, res) => {
+    try{
+        const { id , sid } = req.params
+
+        const updateBooking = await bookingsService.cancelBooking(id, sid);
+
+        res.status(200).json({
+            status: "success",
+            payload: updateBooking
+        });
+    } catch(error) {
+        res.status(500).json({
+            status: "---ERROR---",
+            message: "Error al eliminar el servicio a la reserva",
+            });
+        console.log(error);
+    }
+};
+
+export const deleteBooking = async (req,res) => {
+    try{
+        const { id } = req.params
+
+        const deleteBooking = await bookingsService.deleteClient(id);
+
+        res.status(200).json({
+            status: "success",
+            payload: deleteBooking
+        });
+    } catch(error) {
+        res.status(500).json({
+            status: "---ERROR---",
+            message: "Error al eliminar el cliente",
+            });
+        console.log(error);
+    }
+};

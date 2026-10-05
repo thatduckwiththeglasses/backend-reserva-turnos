@@ -25,11 +25,11 @@ export class ServicesMongoDao {
     }
 
     async reserveCapacity(id, quantity){
-        return ServiceModel.findOneAndUpdate(
+        return ServiceModel.findByIdAndUpdate(id,
             {
                 _id: id,
                 available: true,
-                $expr: {
+                $set: {
                     $lte: [{ $add: ["$reserved", quantity]}, "$capacity"]
                 },
             },
@@ -39,7 +39,7 @@ export class ServicesMongoDao {
     }
 
     async releaseCapacity(id, quantity){
-        return ServiceModel.findOneAndUpdate(
+        return ServiceModel.findByIdAndUpdate(id,
             {
                 _id: id,
                 $expr: {

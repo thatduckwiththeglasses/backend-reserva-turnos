@@ -11,8 +11,8 @@ export class BookingsMongoDao {
         return query.lean();
     }
 
-    async create(data, sid){
-        return BookingModel.create(data, sid);
+    async create(data){
+        return BookingModel.create(data);
     }
 
     async edit(id, data){

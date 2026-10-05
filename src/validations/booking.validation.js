@@ -6,6 +6,8 @@ export const bookingSchema = Joi.object({
  date: Joi.number().required(),
  time: Joi.number().required(),
  services: Joi.array({
-    quantity: Joi.number().required()
+    quantity: Joi.number().int().positive()
  })
  });
+
+ export const updateBookingSchema = bookingSchema.partial();

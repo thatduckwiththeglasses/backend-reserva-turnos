@@ -23,7 +23,7 @@ const serviceSchema = new mongoose.Schema(
  type: String,
  required: true,
  lowercase: true,
- enum: ["deportes","musica","programcion","varios"]
+ enum: ["deportes","musica","programacion","games","juegos","varios","test"]
  },
  capacity:{
     type: Number,

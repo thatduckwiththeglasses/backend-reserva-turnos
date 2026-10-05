@@ -44,4 +44,12 @@ export class ServicesService {
 
         return retiredService;
     }
+    
+    async reserveCapacity(id, reserved){
+        return this.repository.reserveCapacity(id, reserved)
+    }
+
+    async releaseCapacity(id, quantity){
+        return this.repository.releaseCapacity(id, quantity)
+    }
 }

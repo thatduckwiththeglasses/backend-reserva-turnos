@@ -4,15 +4,15 @@ export class BookingsRepository {
     };
 
     getAll() {
-        return this.dao.getAll();
+        return this.dao.getReport();
     };
 
     getById(id) {
         return this.dao.getById(id);
     };
 
-    create(data,sid) {
-        return this.dao.create(data,sid);
+    create(data) {
+        return this.dao.create(data);
     };
 
     edit(id,data){
@@ -22,4 +22,8 @@ export class BookingsRepository {
     addService(id,serviceId){
         return this.dao.addService(id,serviceId);
     };
+
+    delete(bid) {
+        return this.dao.delete(bid);
+    }
 }
