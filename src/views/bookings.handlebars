@@ -1,0 +1,15 @@
+<h1>Clientes</h1>
+
+{{#if bookings.length}}
+
+<section class="bookings" id="bookings">
+    {{#each bookings}}
+      <article class="service">
+        <h2>{{clientName}}</h2>
+        <p>{{clientEmail}}</p>
+        <p>Estado: {{status}} minutos</p>
+        <p>Catidad de reservas: {{services.length}}</p>
+        <button onclick="disableService('{{_id}}')">retirar reserva</button>
+      </article>
+    {{/each}}
+</section>

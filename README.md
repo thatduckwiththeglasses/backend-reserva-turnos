@@ -46,10 +46,12 @@ Se puede
         description: descripcion del servicio; tipo string
         duration: tiempo que dura el servicio (en horas); tipo int
         price: precio del servicio; tipo int
+        capacity: Capacidad del servicio; tipp int
+        reserved: reservas acumuladas del servicio; tipo int; no es requerido para crear servicios
         available: disponibilidad del servicio; tipo boolean
 
 #    2.Bookings:
-        id: valor para identificar las reservas; tipo int
+        id: valor para identificar los clientes; tipo int
         clientName: Nombre del cliente con reserva; tipo string
         clientEmail: Email del cliente; tipo string
         date: fecha establecida de la reserva (dd/mm/aaaa); tipo string

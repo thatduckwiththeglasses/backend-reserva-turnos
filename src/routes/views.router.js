@@ -16,20 +16,22 @@ router.get('/services', async (req, res) => {
   try {
       const services = await servicesService.getServices(req.body);
 
-      res.render('services', {
-        services
-      });
+      res.render('services', { services });
   } catch(error){
     next(error)
   };
 });
 
 router.get('/bookings', async (req, res) => {
-  const bookings = await bookingsService.getBooking(req.params);
-
-  res.render('bookings', {
-    bookings
-  });
+  try{
+    const bookings = await bookingsService.getBooking(req.params);
+    
+    res.render('bookings', {
+      bookings
+    });
+  } catch(error) {
+    next(error)
+  }
 });
 
 

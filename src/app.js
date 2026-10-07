@@ -18,10 +18,11 @@ import { servicesService } from "./dependencies/index.js";
 const io = new Server(server);
 
  app.use(express.json());
+ app.use(logger);
+
  app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
- app.use(logger);
  
  //routers
  app.use('/', viewsRouter);
@@ -47,7 +48,7 @@ app.use((req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('Cliente conectado');
+  console.log('Cliente conectado: ' + socket.id);
   socket.on("update service", async ({ id, available }) => {
     await servicesService.editService(id, available);
     const services = await servicesService.getServices();
@@ -60,4 +61,4 @@ io.on('connection', (socket) => {
   });
 });
 
- export default app;
+ export default server;
