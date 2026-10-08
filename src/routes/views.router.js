@@ -18,21 +18,32 @@ router.get('/services', async (req, res) => {
 
       res.render('services', { services });
   } catch(error){
-    next(error)
+    console.log(error)
   };
 });
 
 router.get('/bookings', async (req, res) => {
   try{
-    const bookings = await bookingsService.getBooking(req.params);
-    
+    const bookings = await bookingsService.getReport();
+    console.log(bookings)
     res.render('bookings', {
       bookings
     });
   } catch(error) {
-    next(error)
+    console.log(error)
   }
 });
+
+router.get('/bookings/:id', async (req, res) => {
+  try{
+    const { id } = req.params
+    const booking = await bookingsService.getBooking(id);
+
+    res.render('booking', { booking });
+  } catch(error) {
+    console.log(error)
+  }
+})
 
 
 export default router;

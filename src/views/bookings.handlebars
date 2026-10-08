@@ -1,15 +1,37 @@
 <h1>Clientes</h1>
 
 {{#if bookings.length}}
-
 <section class="bookings" id="bookings">
     {{#each bookings}}
-      <article class="service">
+      <article class="booking">
         <h2>{{clientName}}</h2>
         <p>{{clientEmail}}</p>
-        <p>Estado: {{status}} minutos</p>
         <p>Catidad de reservas: {{services.length}}</p>
-        <button onclick="disableService('{{_id}}')">retirar reserva</button>
+        <li><a href="/bookings/{{_id}}">Ver mas</a></li>
       </article>
     {{/each}}
 </section>
+{{else}}
+  <p>No hay clientes cargados</p>
+{{/if}}
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+
+  
+
+  socket.on("updated bookings", ({ bookings }) => {
+    let bookingsSection = document.getElementById("bookings");
+    bookingsSection.replaceChildren();
+
+    bookings.forEach((booking) => {
+      servicesSection.innerHTML += `
+      <article class="service">
+       <h2>${booking.clientName}</h2>
+        <p>${booking.clientEmail}</p>
+        <p>Catidad de reservas: ${booking.services.length}</p>
+      </article>
+      `
+    })
+  })
+</script>

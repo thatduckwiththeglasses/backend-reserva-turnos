@@ -1,0 +1,12 @@
+<h1>Reservas de {{booking.clientName}}</h1>
+<p>Email: {{booking.clientEmail}}</p>
+<p>Fecha: {{booking.date}}</p>
+<p>Hora: {{booking.time}}</p>
+{{#if booking.services.length}}
+  {{#each booking.services}}
+    <p>Servicio: {{service.service}}</p>
+    <p>Cantidad: {{service.quantity}}</p>
+  {{/each}}
+{{else}}
+  <p>Este cliente no cuenta con reservas</p>
+{{/if}}
