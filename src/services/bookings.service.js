@@ -20,8 +20,8 @@ export class BookingsService {
         } else throw new Error("No se puede agregar servicios en la creacion de cuenta")
     };
 
-    async getBooking(id) {
-        const booking = await this.repository.getById(id);
+    async getBooking(id,populate) {
+        const booking = await this.repository.getById(id,populate);
 
         if(!booking) throw new Error("Reserva no encontrada");
                

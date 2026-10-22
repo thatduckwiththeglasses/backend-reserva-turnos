@@ -4,8 +4,8 @@
 <p>Hora: {{booking.time}}</p>
 {{#if booking.services.length}}
   {{#each booking.services}}
-    <p>Servicio: {{service.service}}</p>
-    <p>Cantidad: {{service.quantity}}</p>
+    <p>Servicio: {{this.name}}</p>
+    <p>Cantidad: {{this.quantity}}</p>
   {{/each}}
 {{else}}
   <p>Este cliente no cuenta con reservas</p>

@@ -37,6 +37,14 @@ app.get("/",(req, res) => {
     });
 });
 
+app.get("/api/health",(req, res) => {
+    res.status(200).json({
+        status: "success",
+        message: "El Servidor esta activo",
+        version: "0.0.1",
+    });
+});
+
 //Los routers pueden estar aca
 
 //Error Handle

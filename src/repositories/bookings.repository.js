@@ -7,8 +7,8 @@ export class BookingsRepository {
         return this.dao.getReport();
     };
 
-    getById(id) {
-        return this.dao.getById(id);
+    getById(id,populate) {
+        return this.dao.getById(id,populate);
     };
 
     create(data) {

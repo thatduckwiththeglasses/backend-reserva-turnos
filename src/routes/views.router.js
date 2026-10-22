@@ -37,8 +37,9 @@ router.get('/bookings', async (req, res) => {
 router.get('/bookings/:id', async (req, res) => {
   try{
     const { id } = req.params
-    const booking = await bookingsService.getBooking(id);
+    const booking = await bookingsService.getBooking(id, true);
 
+    console.log(booking);
     res.render('booking', { booking });
   } catch(error) {
     console.log(error)
